@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
+import * as FirebaseFirestore from '@google-cloud/firestore';
 
 @Injectable()
-export class FirebaseFirestoreService implements FirebaseFirestore.Firestore {
-  constructor(public readonly app: admin.app.App) {}
+export class FirebaseFirestoreService {
+  private firestore: FirebaseFirestore.Firestore;
 
-  get firestore() {
+  constructor(public readonly app: admin.app.App) {
     if (!this.app) {
       throw new Error('Firebase instance is undefined.');
     }
-    return this.app.firestore();
+    this.firestore = this.app.firestore();
   }
 
   settings(settings: FirebaseFirestore.Settings): void {

@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 
 @Injectable()
-export class FirebaseRemoteConfigService implements admin.remoteConfig.RemoteConfig {
-  constructor(public readonly app: admin.app.App) {}
+export class FirebaseRemoteConfigService {
+  private remoteConfig: admin.remoteConfig.RemoteConfig;
 
-  get remoteConfig() {
+  constructor(public readonly app: admin.app.App) {
     if (!this.app) {
       throw new Error('Firebase instance is undefined.');
     }
-    return this.app.remoteConfig();
+    this.remoteConfig = this.app.remoteConfig();
   }
 
   getTemplate(): Promise<admin.remoteConfig.RemoteConfigTemplate> {

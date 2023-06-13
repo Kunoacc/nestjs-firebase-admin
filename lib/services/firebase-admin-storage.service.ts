@@ -3,14 +3,14 @@ import * as admin from 'firebase-admin';
 import { Bucket } from '@google-cloud/storage';
 
 @Injectable()
-export class FirebaseStorageService implements admin.storage.Storage {
-  constructor(public readonly app: admin.app.App) {}
+export class FirebaseStorageService {
+  private storage: admin.storage.Storage;
 
-  get storage() {
+  constructor(public readonly app: admin.app.App) {
     if (!this.app) {
       throw new Error('Firebase instance is undefined.');
     }
-    return this.app.storage();
+    this.storage = this.app.storage();
   }
 
   bucket(name?: string): Bucket {

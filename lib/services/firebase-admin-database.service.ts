@@ -1,41 +1,46 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
-import { FirebaseApp } from '@firebase/app-types';
 
 @Injectable()
-export class FirebaseDatabaseService implements admin.database.Database {
-  app: FirebaseApp;
-  constructor(public readonly _app: admin.app.App) {}
+export class FirebaseDatabaseService {
+  private database: (url?: string) => admin.database.Database;
 
-  get database() {
-    if (!this._app) {
+  constructor(private readonly app: admin.app.App) {
+    if (!app) {
       throw new Error('Firebase instance is undefined.');
     }
-    return this._app.database();
+    this.database = app.database;
   }
 
-  goOffline(): void {
-    return this.database.goOffline();
+  goOffline(url?: string): void {
+    this.database(url).goOffline();
   }
-  goOnline(): void {
-    return this.database.goOnline();
+
+  goOnline(url?: string): void {
+    this.database(url).goOnline();
   }
-  ref(path?: string | admin.database.Reference): admin.database.Reference {
-    return this.database.ref(path);
+
+  ref(path?: string | admin.database.Reference, url?: string): admin.database.Reference {
+    return this.database(url).ref(path);
   }
-  refFromURL(url: string): admin.database.Reference {
-    return this.database.refFromURL(url);
+
+  refFromURL(refUrl: string, url?: string): admin.database.Reference {
+    return this.database(url).refFromURL(url);
   }
-  getRules(): Promise<string> {
-    return this.database.getRules();
+
+  getRules(url?: string): Promise<string> {
+    return this.database(url).getRules();
   }
-  getRulesJSON(): Promise<object> {
-    return this.database.getRulesJSON();
+
+  getRulesJSON(url?: string): Promise<object> {
+    return this.database(url).getRulesJSON();
   }
-  setRules(source: string | object | Buffer): Promise<void> {
-    return this.database.setRules(source);
+
+  setRules(source: string | object | Buffer, url?: string): Promise<void> {
+    return this.database(url).setRules(source);
   }
-  useEmulator(host: string, port: number): void {
-    this.database.useEmulator(host, port);
+
+  useEmulator(host: string, port: number, url?: string): void {
+    this.database(url).useEmulator(host, port);
   }
 }

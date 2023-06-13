@@ -1,15 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
+import { ActionCodeSettings } from 'firebase-admin/lib/auth/action-code-settings-builder';
+import { ProjectConfigManager } from 'firebase-admin/lib/auth/project-config-manager';
 
 @Injectable()
-export class FirebaseAuthenticationService implements admin.auth.Auth {
-  constructor(public readonly app: admin.app.App) {}
+export class FirebaseAuthenticationService {
+  private auth: admin.auth.Auth;
 
-  get auth() {
+  constructor(public readonly app: admin.app.App) {
     if (!this.app) {
       throw new Error('Firebase instance is undefined.');
     }
-    return this.app.auth();
+    this.auth = this.app.auth();
+  }
+
+  projectConfigManager(): ProjectConfigManager {
+    return this.auth.projectConfigManager();
+  }
+
+  generateVerifyAndChangeEmailLink(
+    email: string,
+    newEmail: string,
+    actionCodeSettings?: ActionCodeSettings,
+  ): Promise<string> {
+    return this.auth.generateVerifyAndChangeEmailLink(email, newEmail, actionCodeSettings);
   }
 
   tenantManager(): admin.auth.TenantManager {
