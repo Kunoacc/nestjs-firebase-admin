@@ -105,8 +105,8 @@ let FirebaseAuthenticationService = class FirebaseAuthenticationService {
         return this.auth.createProviderConfig(config);
     }
 };
-FirebaseAuthenticationService = __decorate([
+exports.FirebaseAuthenticationService = FirebaseAuthenticationService;
+exports.FirebaseAuthenticationService = FirebaseAuthenticationService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Object])
 ], FirebaseAuthenticationService);
-exports.FirebaseAuthenticationService = FirebaseAuthenticationService;

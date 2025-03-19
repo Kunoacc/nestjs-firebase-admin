@@ -24,8 +24,8 @@ let FirebaseStorageService = class FirebaseStorageService {
         return this.storage.bucket(name);
     }
 };
-FirebaseStorageService = __decorate([
+exports.FirebaseStorageService = FirebaseStorageService;
+exports.FirebaseStorageService = FirebaseStorageService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Object])
 ], FirebaseStorageService);
-exports.FirebaseStorageService = FirebaseStorageService;

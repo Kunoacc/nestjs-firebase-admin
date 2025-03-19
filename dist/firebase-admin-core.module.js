@@ -66,8 +66,8 @@ let FirebaseAdminCoreModule = FirebaseAdminCoreModule_1 = class FirebaseAdminCor
         }));
     }
 };
-FirebaseAdminCoreModule = FirebaseAdminCoreModule_1 = __decorate([
+exports.FirebaseAdminCoreModule = FirebaseAdminCoreModule;
+exports.FirebaseAdminCoreModule = FirebaseAdminCoreModule = FirebaseAdminCoreModule_1 = __decorate([
     (0, common_1.Global)(),
     (0, common_1.Module)({})
 ], FirebaseAdminCoreModule);
-exports.FirebaseAdminCoreModule = FirebaseAdminCoreModule;

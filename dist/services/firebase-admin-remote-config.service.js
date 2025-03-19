@@ -42,8 +42,8 @@ let FirebaseRemoteConfigService = class FirebaseRemoteConfigService {
         return this.remoteConfig.listVersions(options);
     }
 };
-FirebaseRemoteConfigService = __decorate([
+exports.FirebaseRemoteConfigService = FirebaseRemoteConfigService;
+exports.FirebaseRemoteConfigService = FirebaseRemoteConfigService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Object])
 ], FirebaseRemoteConfigService);
-exports.FirebaseRemoteConfigService = FirebaseRemoteConfigService;

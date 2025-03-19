@@ -45,8 +45,8 @@ let FirebaseDatabaseService = class FirebaseDatabaseService {
         this.database(url).useEmulator(host, port);
     }
 };
-FirebaseDatabaseService = __decorate([
+exports.FirebaseDatabaseService = FirebaseDatabaseService;
+exports.FirebaseDatabaseService = FirebaseDatabaseService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Object])
 ], FirebaseDatabaseService);
-exports.FirebaseDatabaseService = FirebaseDatabaseService;

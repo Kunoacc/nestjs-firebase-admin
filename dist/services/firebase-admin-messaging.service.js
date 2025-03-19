@@ -29,24 +29,6 @@ let FirebaseMessagingService = class FirebaseMessagingService {
     send(message, dryRun) {
         return this.messaging.send(message, dryRun);
     }
-    sendAll(messages, dryRun) {
-        return this.messaging.sendAll(messages, dryRun);
-    }
-    sendMulticast(message, dryRun) {
-        return this.messaging.sendMulticast(message, dryRun);
-    }
-    sendToDevice(registrationToken, payload, options) {
-        return this.messaging.sendToDevice(registrationToken, payload, options);
-    }
-    sendToDeviceGroup(notificationKey, payload, options) {
-        return this.messaging.sendToDeviceGroup(notificationKey, payload, options);
-    }
-    sendToTopic(topic, payload, options) {
-        return this.messaging.sendToTopic(topic, payload, options);
-    }
-    sendToCondition(condition, payload, options) {
-        return this.messaging.sendToCondition(condition, payload, options);
-    }
     subscribeToTopic(registrationTokens, topic) {
         return this.messaging.subscribeToTopic(registrationTokens, topic);
     }
@@ -54,8 +36,8 @@ let FirebaseMessagingService = class FirebaseMessagingService {
         return this.messaging.unsubscribeFromTopic(registrationTokens, topic);
     }
 };
-FirebaseMessagingService = __decorate([
+exports.FirebaseMessagingService = FirebaseMessagingService;
+exports.FirebaseMessagingService = FirebaseMessagingService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Object])
 ], FirebaseMessagingService);
-exports.FirebaseMessagingService = FirebaseMessagingService;

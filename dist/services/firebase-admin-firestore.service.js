@@ -57,8 +57,8 @@ let FirebaseFirestoreService = class FirebaseFirestoreService {
         return this.firestore.recursiveDelete(ref, bulkWriter);
     }
 };
-FirebaseFirestoreService = __decorate([
+exports.FirebaseFirestoreService = FirebaseFirestoreService;
+exports.FirebaseFirestoreService = FirebaseFirestoreService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [Object])
 ], FirebaseFirestoreService);
-exports.FirebaseFirestoreService = FirebaseFirestoreService;

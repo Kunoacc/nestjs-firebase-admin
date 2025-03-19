@@ -1,5 +1,3 @@
-/// <reference types="node" />
-/// <reference types="node" />
 import * as admin from 'firebase-admin';
 export declare class FirebaseDatabaseService {
   private readonly app;
